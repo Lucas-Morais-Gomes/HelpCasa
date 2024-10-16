@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\HelpCasa_Backend.props" />
+</Project>

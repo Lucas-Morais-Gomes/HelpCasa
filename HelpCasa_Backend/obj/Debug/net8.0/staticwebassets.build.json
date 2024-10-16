@@ -1,8 +1,8 @@
 {
   "Version": 1,
-  "Hash": "9zxI+K0w3Pz+JtvJWSY2B0vn+PGbITSHJxPtxMDP37A=",
-  "Source": "HelpCasa",
-  "BasePath": "_content/HelpCasa",
+  "Hash": "chVoWDrpums1AWhUU48BEkXBwuR2Epk426dSvQ2Oytc=",
+  "Source": "HelpCasa_Backend",
+  "BasePath": "_content/HelpCasa_Backend",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],

@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v8.0": {
-      "LoginRegisterAPI/1.0.0": {
+      "HelpCasa_Backend/1.0.0": {
         "dependencies": {
           "BCrypt.Net-Next": "4.0.3",
           "Microsoft.AspNetCore.OpenApi": "8.0.8",
@@ -15,7 +15,7 @@
           "Swashbuckle.AspNetCore": "6.4.0"
         },
         "runtime": {
-          "LoginRegisterAPI.dll": {}
+          "HelpCasa_Backend.dll": {}
         }
       },
       "BCrypt.Net-Next/4.0.3": {
@@ -585,7 +585,7 @@
     }
   },
   "libraries": {
-    "LoginRegisterAPI/1.0.0": {
+    "HelpCasa_Backend/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

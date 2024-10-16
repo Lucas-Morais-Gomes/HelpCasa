@@ -2609,11 +2609,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\UVV\\Programação Orientada a Objetos II\\LoginRegisterAPI\\LoginRegisterAPI.csproj",
-      "projectName": "LoginRegisterAPI",
-      "projectPath": "D:\\UVV\\Programação Orientada a Objetos II\\LoginRegisterAPI\\LoginRegisterAPI.csproj",
+      "projectUniqueName": "D:\\Users\\Familía\\Downloads\\HelpCasa\\HelpCasa_Backend\\HelpCasa_Backend.csproj",
+      "projectName": "HelpCasa_Backend",
+      "projectPath": "D:\\Users\\Familía\\Downloads\\HelpCasa\\HelpCasa_Backend\\HelpCasa_Backend.csproj",
       "packagesPath": "C:\\Users\\lucas\\.nuget\\packages\\",
-      "outputPath": "D:\\UVV\\Programação Orientada a Objetos II\\LoginRegisterAPI\\obj\\",
+      "outputPath": "D:\\Users\\Familía\\Downloads\\HelpCasa\\HelpCasa_Backend\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "D:\\PROGRAMAS\\Microsoft Visual Studio\\Shared\\NuGetPackages"
