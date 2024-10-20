@@ -111,3 +111,5 @@ D:\Users\Familía\Downloads\HelpCasa\HelpCasa_Backend\obj\Debug\net8.0\refint\He
 D:\Users\Familía\Downloads\HelpCasa\HelpCasa_Backend\obj\Debug\net8.0\HelpCasa_Backend.pdb
 D:\Users\Familía\Downloads\HelpCasa\HelpCasa_Backend\obj\Debug\net8.0\HelpCasa_Backend.genruntimeconfig.cache
 D:\Users\Familía\Downloads\HelpCasa\HelpCasa_Backend\obj\Debug\net8.0\ref\HelpCasa_Backend.dll
+D:\Users\Familía\Downloads\HelpCasa\HelpCasa_Backend\bin\Debug\net8.0\HelpCasa_Backend.xml
+D:\Users\Familía\Downloads\HelpCasa\HelpCasa_Backend\obj\Debug\net8.0\HelpCasa_Backend.xml
