@@ -21,6 +21,14 @@ namespace HelpCasa.Controllers
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] UserDto UserDto) // Crie um DTO para registrar
     {
+
+    // Verifique se o email já está cadastrado
+    var existingUser = await _context.Usuarios.FirstOrDefaultAsync(u => u.Email == UserDto.Email);
+    if (existingUser != null)
+    {
+        return BadRequest(new { message = "Email already registered." });
+    }
+
       // Verifique o tipo de usuário (empregado ou empregador) e crie a instância correspondente
       User User;
 
