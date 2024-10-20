@@ -19,37 +19,35 @@ namespace HelpCasa.Controllers
     }
 
     [HttpPost("register")]
-    public async Task<IActionResult> Register([FromBody] UsuarioDto usuarioDto) // Crie um DTO para registrar
+    public async Task<IActionResult> Register([FromBody] UserDto UserDto) // Crie um DTO para registrar
     {
       // Verifique o tipo de usuário (empregado ou empregador) e crie a instância correspondente
-      Usuario usuario;
+      User User;
 
-      if (usuarioDto.TipoUsuario == "Empregado")
+      if (UserDto.UserType == "Empregado")
       {
-        usuario = new Empregado
+        User = new Employee
         {
-          Nome = usuarioDto.Nome,
-          Email = usuarioDto.Email,
-          SenhaHash = BCrypt.Net.BCrypt.HashPassword(usuarioDto.Senha),
-          Endereco = usuarioDto.Endereco,
-          Telefone = usuarioDto.Telefone,
-          // Defina outras propriedades conforme necessário
+          Name = UserDto.Name,
+          Email = UserDto.Email,
+          Password = BCrypt.Net.BCrypt.HashPassword(UserDto.PasswordDto),
+          Address = UserDto.Address,
+          Phone = UserDto.Phone,
         };
       }
       else // Assumindo que o outro tipo é "Empregador"
       {
-        usuario = new Empregador
+        User = new Employer
         {
-          Nome = usuarioDto.Nome,
-          Email = usuarioDto.Email,
-          SenhaHash = BCrypt.Net.BCrypt.HashPassword(usuarioDto.Senha),
-          Endereco = usuarioDto.Endereco,
-          Telefone = usuarioDto.Telefone,
-          // Defina outras propriedades conforme necessário
+          Name = UserDto.Name,
+          Email = UserDto.Email,
+          Password = BCrypt.Net.BCrypt.HashPassword(UserDto.PasswordDto),
+          Address = UserDto.Address,
+          Phone = UserDto.Phone,
         };
       }
 
-      _context.Usuarios.Add(usuario); // Assumindo que você tem uma DbSet<Usuario> no ApplicationDbContext
+      _context.Usuarios.Add(User); // Assumindo que você tem uma DbSet<User> no ApplicationDbContext
       await _context.SaveChangesAsync();
 
       return Ok(new { message = "User created successfully" });
@@ -59,7 +57,7 @@ namespace HelpCasa.Controllers
     public async Task<IActionResult> Login([FromBody] UsuarioLoginDto usuarioLogin)
     {
       var dbUser = await _context.Usuarios.FirstOrDefaultAsync(u => u.Email == usuarioLogin.Email);
-      if (dbUser == null || !BCrypt.Net.BCrypt.Verify(usuarioLogin.Senha, dbUser.SenhaHash))
+      if (dbUser == null || !BCrypt.Net.BCrypt.Verify(usuarioLogin.PasswordDto, dbUser.Password))
       {
         return Unauthorized(new { message = "Invalid email or password" });
       }
