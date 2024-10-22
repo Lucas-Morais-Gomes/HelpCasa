@@ -76,7 +76,7 @@ namespace HelpCasa.Models
     /// <summary>
     /// Lista de experiências profissionais anteriores do empregado (opcional).
     /// </summary>
-    public List<string>? Experience { get; set; }
+    public string? Experience { get; set; }
   }
 
   /// <summary>
@@ -125,6 +125,16 @@ namespace HelpCasa.Models
     /// </summary>
     [Required(ErrorMessage = "phone é obrigatório.")]
     public required string Phone { get; set; }
+
+    /// <summary>
+    /// Área de especialização do empregado (opcional).
+    /// </summary>
+    public string? AreaOfExpertise { get; set; }
+
+    /// <summary>
+    /// Lista de experiências profissionais anteriores do empregado (opcional).
+    /// </summary>
+    public string? Experience { get; set; }
 
     /// <summary>
     /// Tipo de usuário: "Empregado" ou "Empregador".

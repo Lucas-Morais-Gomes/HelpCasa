@@ -52,6 +52,8 @@ namespace HelpCasa.Controllers
           Password = BCrypt.Net.BCrypt.HashPassword(UserDto.PasswordDto),
           Address = UserDto.Address,
           Phone = UserDto.Phone,
+          AreaOfExpertise = UserDto.AreaOfExpertise,
+          Experience = UserDto.Experience
         };
       }
       else // Assumindo que o outro tipo é "Empregador"

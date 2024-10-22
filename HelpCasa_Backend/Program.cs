@@ -1,8 +1,19 @@
 using Microsoft.EntityFrameworkCore;
 using HelpCasa.Data;
-using System.Reflection; // Adicionado para corrigir o erro
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Adiciona o CORS
+builder.Services.AddCors(options =>
+{
+  options.AddPolicy("AllowSpecificOrigin", builder =>
+  {
+    builder.WithOrigins("http://localhost:3000")
+             .AllowAnyHeader()
+             .AllowAnyMethod();
+  });
+});
 
 // Adicione os serviços ao contêiner
 builder.Services.AddEndpointsApiExplorer();
@@ -35,8 +46,10 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseCors("AllowSpecificOrigin"); // Adiciona o CORS ao pipeline
+
 app.UseAuthorization();
 
-app.MapControllers(); // Certifique-se de mapear os controladores da API
+app.MapControllers();
 
 app.Run();

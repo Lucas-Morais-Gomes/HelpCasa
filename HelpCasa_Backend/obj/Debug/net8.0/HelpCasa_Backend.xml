@@ -189,6 +189,16 @@
             Número de telefone de contato do usuário.
             </summary>
         </member>
+        <member name="P:HelpCasa.Models.UserDto.AreaOfExpertise">
+            <summary>
+            Área de especialização do empregado (opcional).
+            </summary>
+        </member>
+        <member name="P:HelpCasa.Models.UserDto.Experience">
+            <summary>
+            Lista de experiências profissionais anteriores do empregado (opcional).
+            </summary>
+        </member>
         <member name="P:HelpCasa.Models.UserDto.UserType">
             <summary>
             Tipo de usuário: "Empregado" ou "Empregador".
