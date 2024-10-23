@@ -231,5 +231,17 @@
         <member name="M:HelpCasa_Backend.Migrations.ChangingNames.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
+        <member name="T:HelpCasa_Backend.Migrations.updatingDB">
+            <inheritdoc />
+        </member>
+        <member name="M:HelpCasa_Backend.Migrations.updatingDB.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:HelpCasa_Backend.Migrations.updatingDB.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:HelpCasa_Backend.Migrations.updatingDB.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
     </members>
 </doc>

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Container = styled.div`
   min-height: 100vh;
@@ -16,6 +16,7 @@ export const FormWrapper = styled.div`
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 `;
 
 export const Title = styled.h1`
@@ -30,14 +31,21 @@ export const InputField = styled.div`
   position: relative;
 `;
 
-export const Input = styled.input`
+export const Input = styled.input<{ hasError?: boolean }>`
   width: 100%;
-  padding: 0.625rem 2.5rem 0.625rem 2.5rem;
+  padding: 0.625rem 2.5rem;
   border: 1px solid #d1d5db;
   border-radius: 0.5rem;
   outline: none;
   font-size: 1rem;
   color: #374151;
+  transition: border-color 0.3s ease;
+
+  ${({ hasError }) =>
+    hasError &&
+    css`
+      border-color: red; /* Cor da borda para inputs com erro */
+    `}
 
   &:focus {
     border-color: #3b82f6;
@@ -51,6 +59,11 @@ export const IconWrapper = styled.div`
   left: 0.75rem;
   transform: translateY(-50%);
   color: #9ca3af;
+`;
+
+export const ErrorMessage = styled.span`
+  color: red;
+  margin-top: 0.25rem;
 `;
 
 export const ForgotLink = styled.a`

@@ -34,10 +34,10 @@ namespace HelpCasa.Controllers
     public async Task<IActionResult> Register([FromBody] UserDto UserDto)
     {
       // Verifique se o email já está cadastrado
-      var existingUser = await _context.Usuarios.FirstOrDefaultAsync(u => u.Email == UserDto.Email);
+      var existingUser = await _context.Users.FirstOrDefaultAsync(u => u.Email == UserDto.Email);
       if (existingUser != null)
       {
-        return BadRequest(new { message = "Email already registered." });
+        return Conflict(new { message = "Email already registered." });
       }
 
       // Verifique o tipo de usuário (empregado ou empregador) e crie a instância correspondente
@@ -68,7 +68,7 @@ namespace HelpCasa.Controllers
         };
       }
 
-      _context.Usuarios.Add(User); // Assumindo que você tem uma DbSet<User> no ApplicationDbContext
+      _context.Users.Add(User); // Assumindo que você tem uma DbSet<User> no ApplicationDbContext
       await _context.SaveChangesAsync();
 
       return Ok(new { message = "User created successfully" });
@@ -82,7 +82,7 @@ namespace HelpCasa.Controllers
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] UsuarioLoginDto usuarioLogin)
     {
-      var dbUser = await _context.Usuarios.FirstOrDefaultAsync(u => u.Email == usuarioLogin.Email);
+      var dbUser = await _context.Users.FirstOrDefaultAsync(u => u.Email == usuarioLogin.Email);
       if (dbUser == null || !BCrypt.Net.BCrypt.Verify(usuarioLogin.PasswordDto, dbUser.Password))
       {
         return Unauthorized(new { message = "Invalid email or password" });

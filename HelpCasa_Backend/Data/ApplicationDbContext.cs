@@ -7,7 +7,7 @@ namespace HelpCasa.Data
   {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
-    public DbSet<User> Usuarios { get; set; } // Para gerenciar usuários
-    public DbSet<Service> Servicos { get; set; } // Para gerenciar serviços
+    public DbSet<User> Users { get; set; } // Para gerenciar usuários
+    public DbSet<Service> Services { get; set; } // Para gerenciar serviços
   }
 }
