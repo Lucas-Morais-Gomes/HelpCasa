@@ -60,7 +60,7 @@ npm start
 yarn start
 ```
 
-A aplicação estará disponível em `http://localhost:3000`.
+A aplicação estará disponível em `http://localhost:3000/login` ou `http://localhost:3000/register`.
 
 ## Contribuição
 
