@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HelpCasa_Backend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d7567b9b37d2f3c6ab81664874c115eebb4f88ce")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+07f02dcb7bc43a5c43247391c787131dd3cf07df")]
 [assembly: System.Reflection.AssemblyProductAttribute("HelpCasa_Backend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HelpCasa_Backend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
