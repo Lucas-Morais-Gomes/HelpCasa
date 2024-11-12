@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using HelpCasa.Data;
+using HelpCasa.Services;
 using System.Reflection;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,6 +29,21 @@ builder.Services.AddSwaggerGen(c =>
 // Adiciona o ApplicationDbContext para usar o PostgreSQL
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// Carregar configurações de email
+var emailConfig = builder.Configuration
+                         .GetSection("EmailConfiguration")
+                         .Get<EmailConfiguration>();
+
+// Verifica se o emailConfig não é nulo
+if (emailConfig is null)
+{
+  throw new InvalidOperationException("Email configuration is missing in appsettings.json");
+}
+
+builder.Services.AddSingleton(emailConfig);
+
+builder.Services.AddScoped<IEmailSender, EmailSender>();
 
 // Adiciona suporte para controladores
 builder.Services.AddControllers();

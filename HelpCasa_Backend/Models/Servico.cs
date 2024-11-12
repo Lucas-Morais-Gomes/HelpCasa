@@ -13,12 +13,12 @@ namespace HelpCasa.Models
     /// <summary>
     /// Nome do serviço oferecido.
     /// </summary>
-    public string ServiceName { get; set; }
+    public required string ServiceName { get; set; }
 
     /// <summary>
     /// Descrição detalhada do serviço.
     /// </summary>
-    public string ServiceDescription { get; set; }
+    public string? ServiceDescription { get; set; }
 
     /// <summary>
     /// Preço do serviço oferecido.
@@ -28,7 +28,7 @@ namespace HelpCasa.Models
     /// <summary>
     /// Localização onde o serviço será prestado.
     /// </summary>
-    public string Location { get; set; }
+    public string? Location { get; set; }
 
     /// <summary>
     /// Data e hora que o serviço será executado.
@@ -38,11 +38,11 @@ namespace HelpCasa.Models
     /// <summary>
     /// Referência ao empregado que oferece o serviço.
     /// </summary>
-    public Employee Employee { get; set; }
+    public Employee? Employee { get; set; }
 
     /// <summary>
     /// Referência ao empregador que contrata o serviço.
     /// </summary>
-    public Employer Employer { get; set; }
+    public Employer? Employer { get; set; }
   }
 }

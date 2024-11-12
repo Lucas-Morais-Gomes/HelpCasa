@@ -9,11 +9,12 @@
             Controller responsável pela autenticação e registro de usuários.
             </summary>
         </member>
-        <member name="M:HelpCasa.Controllers.AuthController.#ctor(HelpCasa.Data.ApplicationDbContext)">
+        <member name="M:HelpCasa.Controllers.AuthController.#ctor(HelpCasa.Data.ApplicationDbContext,Microsoft.AspNetCore.Identity.UI.Services.IEmailSender)">
             <summary>
             Construtor da classe AuthController, responsável pela injeção de dependência do contexto de banco de dados.
             </summary>
             <param name="context">O contexto de banco de dados injetado.</param>
+            <param name="emailSender"></param>
         </member>
         <member name="M:HelpCasa.Controllers.AuthController.Register(HelpCasa.Models.UserDto)">
             <summary>
@@ -28,6 +29,99 @@
             </summary>
             <param name="usuarioLogin">Dados de login, contendo email e senha.</param>
             <returns>Retorna uma mensagem de sucesso ou erro, caso as credenciais estejam incorretas.</returns>
+        </member>
+        <member name="M:HelpCasa.Controllers.AuthController.ForgotPassword(HelpCasa.Models.ForgotPasswordDto)">
+            <summary>
+            Envia um email para o usuário caso ele esqueça a sua senha
+            </summary>
+            <param name="forgotPasswordDto"></param>
+            <returns></returns>
+        </member>
+        <member name="T:HelpCasa.Controllers.ProfileController">
+            <summary>
+            Controller responsável pela autenticação e registro de usuários.
+            </summary>
+        </member>
+        <member name="M:HelpCasa.Controllers.ProfileController.#ctor(HelpCasa.Data.ApplicationDbContext)">
+            <summary>
+            Construtor da classe AuthController, responsável pela injeção de dependência do contexto de banco de dados.
+            </summary>
+            <param name="context">O contexto de banco de dados injetado.</param>
+        </member>
+        <member name="M:HelpCasa.Controllers.ProfileController.GetUserByEmail(System.String)">
+            <summary>
+            Endpoint para obter informações do usuário pelo e-mail.
+            </summary>
+        </member>
+        <member name="M:HelpCasa.Controllers.ProfileController.UpdateUserProfile(HelpCasa.Models.UpdateProfileRequestDto)">
+            <summary>
+            Endpoint para atualizar o perfil do usuário.
+            </summary>
+        </member>
+        <member name="T:HelpCasa.Models.UserDto">
+            <summary>
+            Data Transfer Object (DTO) utilizado para o registro de novos usuários.
+            </summary>
+        </member>
+        <member name="P:HelpCasa.Models.UserDto.Name">
+            <summary>
+            Nome completo do usuário.
+            </summary>
+        </member>
+        <member name="P:HelpCasa.Models.UserDto.Email">
+            <summary>
+            Endereço de email do usuário.
+            </summary>
+        </member>
+        <member name="P:HelpCasa.Models.UserDto.Password">
+            <summary>
+            Senha para o cadastro do usuário.
+            </summary>
+        </member>
+        <member name="P:HelpCasa.Models.UserDto.Address">
+            <summary>
+            Endereço residencial do usuário.
+            </summary>
+        </member>
+        <member name="P:HelpCasa.Models.UserDto.Phone">
+            <summary>
+            Número de telefone de contato do usuário.
+            </summary>
+        </member>
+        <member name="P:HelpCasa.Models.UserDto.AreaOfExpertise">
+            <summary>
+            Área de especialização do empregado (opcional).
+            </summary>
+        </member>
+        <member name="P:HelpCasa.Models.UserDto.Experience">
+            <summary>
+            Lista de experiências profissionais anteriores do empregado (opcional).
+            </summary>
+        </member>
+        <member name="P:HelpCasa.Models.UserDto.UserType">
+            <summary>
+            Tipo de usuário: "Empregado" ou "Empregador".
+            </summary>
+        </member>
+        <member name="T:HelpCasa.Models.UsuarioLoginDto">
+            <summary>
+            DTO utilizado para o login de usuários no sistema.
+            </summary>
+        </member>
+        <member name="P:HelpCasa.Models.UsuarioLoginDto.Email">
+            <summary>
+            Endereço de email utilizado para login.
+            </summary>
+        </member>
+        <member name="P:HelpCasa.Models.UsuarioLoginDto.Password">
+            <summary>
+            Senha do usuário utilizada para login.
+            </summary>
+        </member>
+        <member name="T:HelpCasa.Models.UpdatePasswordDto">
+            <summary>
+            DTO para atualizar a senha
+            </summary>
         </member>
         <member name="T:HelpCasa.Models.Service">
             <summary>
@@ -159,66 +253,6 @@
             Lista de serviços contratados pelo empregador (opcional).
             </summary>
         </member>
-        <member name="T:HelpCasa.Models.UserDto">
-            <summary>
-            Data Transfer Object (DTO) utilizado para o registro de novos usuários.
-            </summary>
-        </member>
-        <member name="P:HelpCasa.Models.UserDto.Name">
-            <summary>
-            Nome completo do usuário.
-            </summary>
-        </member>
-        <member name="P:HelpCasa.Models.UserDto.Email">
-            <summary>
-            Endereço de email do usuário.
-            </summary>
-        </member>
-        <member name="P:HelpCasa.Models.UserDto.PasswordDto">
-            <summary>
-            Senha para o cadastro do usuário.
-            </summary>
-        </member>
-        <member name="P:HelpCasa.Models.UserDto.Address">
-            <summary>
-            Endereço residencial do usuário.
-            </summary>
-        </member>
-        <member name="P:HelpCasa.Models.UserDto.Phone">
-            <summary>
-            Número de telefone de contato do usuário.
-            </summary>
-        </member>
-        <member name="P:HelpCasa.Models.UserDto.AreaOfExpertise">
-            <summary>
-            Área de especialização do empregado (opcional).
-            </summary>
-        </member>
-        <member name="P:HelpCasa.Models.UserDto.Experience">
-            <summary>
-            Lista de experiências profissionais anteriores do empregado (opcional).
-            </summary>
-        </member>
-        <member name="P:HelpCasa.Models.UserDto.UserType">
-            <summary>
-            Tipo de usuário: "Empregado" ou "Empregador".
-            </summary>
-        </member>
-        <member name="T:HelpCasa.Models.UsuarioLoginDto">
-            <summary>
-            DTO utilizado para o login de usuários no sistema.
-            </summary>
-        </member>
-        <member name="P:HelpCasa.Models.UsuarioLoginDto.Email">
-            <summary>
-            Endereço de email utilizado para login.
-            </summary>
-        </member>
-        <member name="P:HelpCasa.Models.UsuarioLoginDto.PasswordDto">
-            <summary>
-            Senha do usuário utilizada para login.
-            </summary>
-        </member>
         <member name="T:HelpCasa_Backend.Migrations.ChangingNames">
             <inheritdoc />
         </member>
@@ -241,6 +275,18 @@
             <inheritdoc />
         </member>
         <member name="M:HelpCasa_Backend.Migrations.updatingDB.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:HelpCasa_Backend.Migrations.NomeDaMigracao">
+            <inheritdoc />
+        </member>
+        <member name="M:HelpCasa_Backend.Migrations.NomeDaMigracao.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:HelpCasa_Backend.Migrations.NomeDaMigracao.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:HelpCasa_Backend.Migrations.NomeDaMigracao.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
     </members>
