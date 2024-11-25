@@ -2,10 +2,6 @@ using Microsoft.AspNetCore.Mvc;
 using HelpCasa.Data;
 using HelpCasa.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Net;
-using System.Net.Mail;
-using Microsoft.AspNetCore.Identity.UI.Services;
-
 
 namespace HelpCasa.Controllers
 {

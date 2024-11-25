@@ -134,6 +134,43 @@ namespace HelpCasa.Models
         public string? Experience { get; set; } // Apenas para Empregados
         public string? AvailableTimeRange { get; set; } // Apenas para Empregados
     }
+    public class CreateServiceDto
+    {
+        /// <summary>
+        /// Nome do serviço oferecido.
+        /// </summary>
+        public string ServiceName { get; set; }
+
+        /// <summary>
+        /// Descrição detalhada do serviço.
+        /// </summary>
+        public string? ServiceDescription { get; set; }
+
+        /// <summary>
+        /// Preço do serviço oferecido.
+        /// </summary>
+        public decimal ServicePrice { get; set; }
+
+        /// <summary>
+        /// Localização onde o serviço será prestado.
+        /// </summary>
+        public string? Location { get; set; }
+
+        /// <summary>
+        /// Data e hora que o serviço será executado.
+        /// </summary>
+        public DateTime DateTime { get; set; }
+
+        /// <summary>
+        /// ID do empregado que oferece o serviço.
+        /// </summary>
+        public int EmployeeId { get; set; }
+
+        /// <summary>
+        /// ID do empregador que contrata o serviço.
+        /// </summary>
+        public int EmployerId { get; set; }
+    }
 
 
 }

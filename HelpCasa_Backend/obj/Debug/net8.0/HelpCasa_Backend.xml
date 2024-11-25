@@ -9,12 +9,11 @@
             Controller responsável pela autenticação e registro de usuários.
             </summary>
         </member>
-        <member name="M:HelpCasa.Controllers.AuthController.#ctor(HelpCasa.Data.ApplicationDbContext,Microsoft.AspNetCore.Identity.UI.Services.IEmailSender)">
+        <member name="M:HelpCasa.Controllers.AuthController.#ctor(HelpCasa.Data.ApplicationDbContext)">
             <summary>
             Construtor da classe AuthController, responsável pela injeção de dependência do contexto de banco de dados.
             </summary>
             <param name="context">O contexto de banco de dados injetado.</param>
-            <param name="emailSender"></param>
         </member>
         <member name="M:HelpCasa.Controllers.AuthController.Register(HelpCasa.Models.UserDto)">
             <summary>
@@ -30,11 +29,12 @@
             <param name="usuarioLogin">Dados de login, contendo email e senha.</param>
             <returns>Retorna uma mensagem de sucesso ou erro, caso as credenciais estejam incorretas.</returns>
         </member>
-        <member name="M:HelpCasa.Controllers.AuthController.ForgotPassword(HelpCasa.Models.ForgotPasswordDto)">
+        <member name="M:HelpCasa.Controllers.AuthController.ForgotPassword(HelpCasa.Models.ForgotPasswordDto,Microsoft.Extensions.Options.IOptions{HelpCasa.Services.MailgunSettings})">
             <summary>
             Envia um email para o usuário caso ele esqueça a sua senha
             </summary>
             <param name="forgotPasswordDto"></param>
+            <param name="mailgunOptions"></param>
             <returns></returns>
         </member>
         <member name="T:HelpCasa.Controllers.ProfileController">
@@ -56,6 +56,16 @@
         <member name="M:HelpCasa.Controllers.ProfileController.UpdateUserProfile(HelpCasa.Models.UpdateProfileRequestDto)">
             <summary>
             Endpoint para atualizar o perfil do usuário.
+            </summary>
+        </member>
+        <member name="M:HelpCasa.Controllers.ServiceController.CreateService(HelpCasa.Models.CreateServiceDto)">
+            <summary>
+            Cria um novo serviço.
+            </summary>
+        </member>
+        <member name="M:HelpCasa.Controllers.ServiceController.GetServiceById(System.Int32)">
+            <summary>
+            Obtém um serviço pelo ID (para uso com CreatedAtAction).
             </summary>
         </member>
         <member name="T:HelpCasa.Models.UserDto">
@@ -121,6 +131,41 @@
         <member name="T:HelpCasa.Models.UpdatePasswordDto">
             <summary>
             DTO para atualizar a senha
+            </summary>
+        </member>
+        <member name="P:HelpCasa.Models.CreateServiceDto.ServiceName">
+            <summary>
+            Nome do serviço oferecido.
+            </summary>
+        </member>
+        <member name="P:HelpCasa.Models.CreateServiceDto.ServiceDescription">
+            <summary>
+            Descrição detalhada do serviço.
+            </summary>
+        </member>
+        <member name="P:HelpCasa.Models.CreateServiceDto.ServicePrice">
+            <summary>
+            Preço do serviço oferecido.
+            </summary>
+        </member>
+        <member name="P:HelpCasa.Models.CreateServiceDto.Location">
+            <summary>
+            Localização onde o serviço será prestado.
+            </summary>
+        </member>
+        <member name="P:HelpCasa.Models.CreateServiceDto.DateTime">
+            <summary>
+            Data e hora que o serviço será executado.
+            </summary>
+        </member>
+        <member name="P:HelpCasa.Models.CreateServiceDto.EmployeeId">
+            <summary>
+            ID do empregado que oferece o serviço.
+            </summary>
+        </member>
+        <member name="P:HelpCasa.Models.CreateServiceDto.EmployerId">
+            <summary>
+            ID do empregador que contrata o serviço.
             </summary>
         </member>
         <member name="T:HelpCasa.Models.Service">
@@ -287,6 +332,18 @@
             <inheritdoc />
         </member>
         <member name="M:HelpCasa_Backend.Migrations.NomeDaMigracao.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:HelpCasa_Backend.Migrations.UpdateDB">
+            <inheritdoc />
+        </member>
+        <member name="M:HelpCasa_Backend.Migrations.UpdateDB.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:HelpCasa_Backend.Migrations.UpdateDB.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:HelpCasa_Backend.Migrations.UpdateDB.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
     </members>

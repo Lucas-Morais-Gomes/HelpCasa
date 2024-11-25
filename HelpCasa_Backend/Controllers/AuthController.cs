@@ -2,10 +2,10 @@ using Microsoft.AspNetCore.Mvc;
 using HelpCasa.Data;
 using HelpCasa.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Net;
-using System.Net.Mail;
 using Microsoft.AspNetCore.Identity.UI.Services;
-
+using Microsoft.Extensions.Options;
+using HelpCasa.Services;
+using System.Text;
 
 namespace HelpCasa.Controllers
 {
@@ -17,17 +17,14 @@ namespace HelpCasa.Controllers
   public class AuthController : ControllerBase
   {
     private readonly ApplicationDbContext _context;
-    private readonly IEmailSender _emailSender;
 
     /// <summary>
     /// Construtor da classe AuthController, responsável pela injeção de dependência do contexto de banco de dados.
     /// </summary>
     /// <param name="context">O contexto de banco de dados injetado.</param>
-    /// <param name="emailSender"></param>
-    public AuthController(ApplicationDbContext context, IEmailSender emailSender)
+    public AuthController(ApplicationDbContext context)
     {
       _context = context;
-      _emailSender = emailSender;
     }
 
     /// <summary>
@@ -98,14 +95,16 @@ namespace HelpCasa.Controllers
     /// Envia um email para o usuário caso ele esqueça a sua senha
     /// </summary>
     /// <param name="forgotPasswordDto"></param>
+    /// <param name="mailgunOptions"></param>
     /// <returns></returns>
     [HttpPost("forgot-password")]
-    public async Task<IActionResult> ForgotPassword([FromBody] ForgotPasswordDto forgotPasswordDto)
+    public async Task<IActionResult> ForgotPassword([FromBody] ForgotPasswordDto forgotPasswordDto, [FromServices] IOptions<MailgunSettings> mailgunOptions)
     {
       if (!ModelState.IsValid)
       {
         return BadRequest();
       }
+
       var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == forgotPasswordDto.Email);
       if (user == null)
       {
@@ -127,17 +126,27 @@ namespace HelpCasa.Controllers
       _context.Users.Update(user);
       await _context.SaveChangesAsync();
 
-      // Envio de e-mail de redefinição
+      // Configuração do Mailgun
+      var mailgunSettings = mailgunOptions.Value;
       var resetLink = $"http://localhost:3000/forgot-password-solicitation?token={resetToken}";
 
-      await _emailSender.SendEmailAsync(
-        user.Email,
-        "Redefinição de Senha",
-        $"Clique no link abaixo para redefinir sua senha:\n\n{resetLink}"
-      );
+      // Enviar o e-mail usando o MailgunEmailSender
+      var subject = "Redefinição de Senha";
+      var body = $"Clique no link abaixo para redefinir sua senha:\n\n{resetLink}";
 
+      var response = MailgunEmailSender.SendEmail(user.Email, subject, body);
 
-      return Ok(new { message = "Link de redefinição de senha enviado para o e-mail." });
+      // Verifique a resposta do envio de e-mail
+      if (response.IsSuccessful)
+      {
+        return Ok(new { message = "Link de redefinição de senha enviado para o e-mail." });
+      }
+      else
+      {
+        var errorResponse = response.Content;
+        Console.WriteLine($"Mailgun error response: {errorResponse}");
+        return StatusCode(500, new { message = "Failed to send reset password email.", details = errorResponse });
+      }
     }
 
 

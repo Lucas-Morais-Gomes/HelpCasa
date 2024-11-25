@@ -1,38 +1,34 @@
-using System.Net;
-using System.Net.Mail;
-using Microsoft.AspNetCore.Identity.UI.Services;
+using RestSharp;
 
 namespace HelpCasa.Services
 {
-    public class EmailSender : IEmailSender
+    public class MailgunEmailSender
     {
-        private readonly EmailConfiguration _emailConfig;
-
-        public EmailSender(EmailConfiguration emailConfig)
+        public static RestResponse SendEmail(string toEmail, string subject, string body)
         {
-            _emailConfig = emailConfig;
-        }
+            // Instancia o cliente RestSharp com a URL base
+            RestClient client = new RestClient("https://api.mailgun.net/v3");
 
-        public async Task SendEmailAsync(string email, string subject, string htmlMessage)
-        {
-            var smtpClient = new SmtpClient(_emailConfig.SmtpServer)
-            {
-                Port = _emailConfig.Port,
-                Credentials = new NetworkCredential(_emailConfig.Username, _emailConfig.Password),
-                EnableSsl = true,
-            };
+            // Cria a requisição
+            RestRequest request = new RestRequest();
+            request.AddParameter("domain", "sandbox563c835b37634b9e9cc2fe91d5d4469e.mailgun.org", ParameterType.UrlSegment);
+            request.Resource = "{domain}/messages";
 
-            var mailMessage = new MailMessage
-            {
-                From = new MailAddress(_emailConfig.From),
-                Subject = subject,
-                Body = htmlMessage,
-                IsBodyHtml = true,
-            };
+            // Adiciona cabeçalhos manualmente para a autenticação
+            string authHeader = "Basic " + Convert.ToBase64String(System.Text.Encoding.ASCII.GetBytes("api:5c23b41b306777f55e9a2c9e8ea20007-6df690bb-5e53708d"));
+            request.AddHeader("Authorization", authHeader);  // Adiciona o cabeçalho de autenticação
 
-            mailMessage.To.Add(email);
+            // Parâmetros do e-mail
+            request.AddParameter("from", $"HelpCasa Suporte <helpcasa.support@gmail.com>");
+            request.AddParameter("to", toEmail);
+            request.AddParameter("subject", subject);
+            request.AddParameter("text", body);
 
-            await smtpClient.SendMailAsync(mailMessage);
+            // Define o método como POST
+            request.Method = Method.Post;
+
+            // Executa a requisição e retorna a resposta
+            return client.Execute(request);
         }
     }
 }

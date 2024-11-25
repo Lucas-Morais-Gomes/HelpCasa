@@ -113,3 +113,4 @@ D:\Users\Familía\Downloads\HelpCasa\HelpCasa_Backend\obj\Debug\net8.0\HelpCasa_
 D:\Users\Familía\Downloads\HelpCasa\HelpCasa_Backend\obj\Debug\net8.0\ref\HelpCasa_Backend.dll
 D:\Users\Familía\Downloads\HelpCasa\HelpCasa_Backend\bin\Debug\net8.0\HelpCasa_Backend.xml
 D:\Users\Familía\Downloads\HelpCasa\HelpCasa_Backend\obj\Debug\net8.0\HelpCasa_Backend.xml
+D:\Users\Familía\Downloads\HelpCasa\HelpCasa_Backend\bin\Debug\net8.0\RestSharp.dll
