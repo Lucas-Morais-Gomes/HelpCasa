@@ -53,7 +53,8 @@ namespace HelpCasa.Controllers
           Address = UserDto.Address,
           Phone = UserDto.Phone,
           AreaOfExpertise = UserDto.AreaOfExpertise,
-          Experience = UserDto.Experience
+          Experience = UserDto.Experience,
+          Subscription = false
         };
       }
       else
@@ -65,6 +66,7 @@ namespace HelpCasa.Controllers
           Password = BCrypt.Net.BCrypt.HashPassword(UserDto.Password),
           Address = UserDto.Address,
           Phone = UserDto.Phone,
+          Subscription = false
         };
       }
 
@@ -88,7 +90,53 @@ namespace HelpCasa.Controllers
         return Unauthorized(new { message = "Invalid email or password" });
       }
 
-      return Ok(new { message = "Login successful" });
+      // Verifica o tipo de usuário (Empregado ou Empregador) e retorna informações específicas
+      if (dbUser is Employee employee)
+      {
+        // Mapear Employee para EmployeeResponseDto
+        var response = new EmployeeResponseDto
+        {
+          Id = employee.Id,
+          Name = employee.Name,
+          Email = employee.Email,
+          Address = employee.Address,
+          Phone = employee.Phone,
+          ProfilePicture = employee.ProfilePicture,
+          Description = employee.Description,
+          Rating = employee.Rating,
+          AvailableTimeRange = employee.AvailableTimeRange,
+          AreaOfExpertise = employee.AreaOfExpertise,
+          Experience = employee.Experience,
+          OfferedServices = employee.OfferedServices?.Select(s => s.ServiceName).ToList(),
+          UserType = "Empregado",
+          Subscription = employee.Subscription
+        };
+
+        return Ok(response);
+      }
+      else if (dbUser is Employer employer)
+      {
+        // Mapear Employer para EmployerResponseDto
+        var response = new EmployerResponseDto
+        {
+          Id = employer.Id,
+          Name = employer.Name,
+          Email = employer.Email,
+          Address = employer.Address,
+          Phone = employer.Phone,
+          ProfilePicture = employer.ProfilePicture,
+          Description = employer.Description,
+          Rating = employer.Rating,
+          ContractedServices = employer.ContractedServices?.Select(s => s.ServiceName).ToList(),
+          UserType = "Empregador",
+          Subscription = employer.Subscription
+        };
+
+        return Ok(response);
+      }
+
+      // Se o tipo de usuário for desconhecido
+      return BadRequest(new { message = "Invalid user type" });
     }
 
     /// <summary>

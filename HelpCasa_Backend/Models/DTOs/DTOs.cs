@@ -53,6 +53,8 @@ namespace HelpCasa.Models
         /// </summary>
         [Required(ErrorMessage = "Tipo de usuário é obrigatório.")]
         public required string UserType { get; set; }
+
+        public bool? Subscription { get; set; }
     }
 
     /// <summary>
@@ -106,6 +108,8 @@ namespace HelpCasa.Models
         public string? Experience { get; set; }
         public List<string>? OfferedServices { get; set; }
         public required string UserType { get; set; }
+
+        public required bool Subscription { get; set; }
     }
 
     public class EmployerResponseDto
@@ -120,6 +124,8 @@ namespace HelpCasa.Models
         public int Rating { get; set; }
         public List<string>? ContractedServices { get; set; }
         public required string UserType { get; set; }
+
+        public required bool Subscription { get; set; }
     }
 
     public class UpdateProfileRequestDto
@@ -170,6 +176,10 @@ namespace HelpCasa.Models
         /// ID do empregador que contrata o serviço.
         /// </summary>
         public int EmployerId { get; set; }
+
+        public required string Category { get; set; }
+
+        public string? ImgUrl { get; set; }
     }
 
 

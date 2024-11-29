@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace HelpCasa_Backend.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241125213015_UpdateDB")]
-    partial class UpdateDB
+    [Migration("20241129190736_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,6 +33,10 @@ namespace HelpCasa_Backend.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Category")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<DateTime>("DateTime")
                         .HasColumnType("timestamp with time zone");
 
@@ -41,6 +45,12 @@ namespace HelpCasa_Backend.Migrations
 
                     b.Property<int?>("EmployerId")
                         .HasColumnType("integer");
+
+                    b.Property<string>("ImgUrl")
+                        .HasColumnType("text");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
 
                     b.Property<string>("Location")
                         .HasColumnType("text");
@@ -111,6 +121,9 @@ namespace HelpCasa_Backend.Migrations
 
                     b.Property<string>("ResetPasswordToken")
                         .HasColumnType("text");
+
+                    b.Property<bool>("Subscription")
+                        .HasColumnType("boolean");
 
                     b.HasKey("Id");
 

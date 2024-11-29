@@ -58,14 +58,55 @@
             Endpoint para atualizar o perfil do usuário.
             </summary>
         </member>
+        <member name="T:HelpCasa.Controllers.SearchController">
+            <summary>
+            Controller responsável pela funcionalidade de pesquisa.
+            </summary>
+        </member>
+        <member name="M:HelpCasa.Controllers.SearchController.#ctor(HelpCasa.Data.ApplicationDbContext)">
+            <summary>
+            Construtor da classe SearchController, responsável pela injeção de dependência do contexto de banco de dados.
+            </summary>
+            <param name="context">O contexto de banco de dados injetado.</param>
+        </member>
         <member name="M:HelpCasa.Controllers.ServiceController.CreateService(HelpCasa.Models.CreateServiceDto)">
             <summary>
-            Cria um novo serviço.
+            Cria um novo serviço (somente o empregador pode criar).
+            </summary>
+        </member>
+        <member name="M:HelpCasa.Controllers.ServiceController.AcceptService(System.Int32,System.Int32)">
+            <summary>
+            O empregado aceita um serviço, associando-se a ele e desativando o serviço.
             </summary>
         </member>
         <member name="M:HelpCasa.Controllers.ServiceController.GetServiceById(System.Int32)">
             <summary>
-            Obtém um serviço pelo ID (para uso com CreatedAtAction).
+            Obtém um serviço pelo ID.
+            </summary>
+        </member>
+        <member name="M:HelpCasa.Controllers.ServiceController.GetAllServices">
+            <summary>
+            Obtém todos os serviços cadastrados.
+            </summary>
+        </member>
+        <member name="M:HelpCasa.Controllers.ServiceController.GetServicesByCategory(System.String)">
+            <summary>
+            Obtém serviços por categoria.
+            </summary>
+        </member>
+        <member name="M:HelpCasa.Controllers.ServiceController.GetServicesByName(System.String)">
+            <summary>
+            Obtém serviços pelo nome.
+            </summary>
+        </member>
+        <member name="M:HelpCasa.Controllers.ServiceController.GetServicesByPrice(System.Decimal)">
+            <summary>
+            Obtém serviços pelo preço.
+            </summary>
+        </member>
+        <member name="M:HelpCasa.Controllers.ServiceController.GetServicesByAuthor(System.Int32)">
+            <summary>
+            Obtém serviços pelo autor (empregador).
             </summary>
         </member>
         <member name="T:HelpCasa.Models.UserDto">
@@ -213,137 +254,16 @@
             Referência ao empregador que contrata o serviço.
             </summary>
         </member>
-        <member name="T:HelpCasa.Models.User">
-            <summary>
-            Classe abstrata que representa um usuário genérico (empregado ou empregador) no sistema.
-            </summary>
-        </member>
-        <member name="P:HelpCasa.Models.User.Id">
-            <summary>
-            Identificador único do usuário.
-            </summary>
-        </member>
-        <member name="P:HelpCasa.Models.User.Name">
-            <summary>
-            Nome completo do usuário.
-            </summary>
-        </member>
-        <member name="P:HelpCasa.Models.User.Email">
-            <summary>
-            Endereço de email do usuário.
-            </summary>
-        </member>
-        <member name="P:HelpCasa.Models.User.Password">
-            <summary>
-            Senha criptografada do usuário.
-            </summary>
-        </member>
-        <member name="P:HelpCasa.Models.User.Address">
-            <summary>
-            Endereço residencial do usuário.
-            </summary>
-        </member>
-        <member name="P:HelpCasa.Models.User.ProfilePicture">
-            <summary>
-            Caminho ou URL da foto de perfil do usuário (opcional).
-            </summary>
-        </member>
-        <member name="P:HelpCasa.Models.User.Description">
-            <summary>
-            Descrição adicional do usuário (opcional).
-            </summary>
-        </member>
-        <member name="P:HelpCasa.Models.User.Phone">
-            <summary>
-            Número de telefone de contato do usuário.
-            </summary>
-        </member>
-        <member name="P:HelpCasa.Models.User.Rating">
-            <summary>
-            Avaliação geral do usuário baseada em feedbacks (valor padrão 0).
-            </summary>
-        </member>
-        <member name="T:HelpCasa.Models.Employee">
-            <summary>
-            Classe que representa um empregado no sistema.
-            </summary>
-        </member>
-        <member name="P:HelpCasa.Models.Employee.AvailableTimeRange">
-            <summary>
-            Faixa de horário disponível para trabalhar (opcional).
-            </summary>
-        </member>
-        <member name="P:HelpCasa.Models.Employee.AreaOfExpertise">
-            <summary>
-            Área de especialização do empregado (opcional).
-            </summary>
-        </member>
-        <member name="P:HelpCasa.Models.Employee.OfferedServices">
-            <summary>
-            Lista de serviços oferecidos pelo empregado (opcional).
-            </summary>
-        </member>
-        <member name="P:HelpCasa.Models.Employee.Experience">
-            <summary>
-            Lista de experiências profissionais anteriores do empregado (opcional).
-            </summary>
-        </member>
-        <member name="T:HelpCasa.Models.Employer">
-            <summary>
-            Classe que representa um empregador no sistema.
-            </summary>
-        </member>
-        <member name="P:HelpCasa.Models.Employer.ContractedServices">
-            <summary>
-            Lista de serviços contratados pelo empregador (opcional).
-            </summary>
-        </member>
-        <member name="T:HelpCasa_Backend.Migrations.ChangingNames">
+        <member name="T:HelpCasa_Backend.Migrations.InitialCreate">
             <inheritdoc />
         </member>
-        <member name="M:HelpCasa_Backend.Migrations.ChangingNames.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:HelpCasa_Backend.Migrations.InitialCreate.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:HelpCasa_Backend.Migrations.ChangingNames.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:HelpCasa_Backend.Migrations.InitialCreate.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:HelpCasa_Backend.Migrations.ChangingNames.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="T:HelpCasa_Backend.Migrations.updatingDB">
-            <inheritdoc />
-        </member>
-        <member name="M:HelpCasa_Backend.Migrations.updatingDB.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:HelpCasa_Backend.Migrations.updatingDB.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:HelpCasa_Backend.Migrations.updatingDB.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="T:HelpCasa_Backend.Migrations.NomeDaMigracao">
-            <inheritdoc />
-        </member>
-        <member name="M:HelpCasa_Backend.Migrations.NomeDaMigracao.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:HelpCasa_Backend.Migrations.NomeDaMigracao.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:HelpCasa_Backend.Migrations.NomeDaMigracao.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="T:HelpCasa_Backend.Migrations.UpdateDB">
-            <inheritdoc />
-        </member>
-        <member name="M:HelpCasa_Backend.Migrations.UpdateDB.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:HelpCasa_Backend.Migrations.UpdateDB.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:HelpCasa_Backend.Migrations.UpdateDB.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+        <member name="M:HelpCasa_Backend.Migrations.InitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
     </members>

@@ -52,7 +52,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseCors("AllowSpecificOrigin"); // Adiciona o CORS ao pipeline
+app.UseCors("AllowSpecificOrigin");
 
 app.UseAuthorization();
 

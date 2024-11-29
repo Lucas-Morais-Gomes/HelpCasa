@@ -56,7 +56,8 @@ namespace HelpCasa.Controllers
                     AreaOfExpertise = employee.AreaOfExpertise,
                     Experience = employee.Experience,
                     OfferedServices = employee.OfferedServices?.Select(s => s.ServiceName).ToList(),
-                    UserType = "Empregado"
+                    UserType = "Empregado",
+                    Subscription = employee.Subscription
                 };
 
                 return Ok(response);
@@ -75,7 +76,8 @@ namespace HelpCasa.Controllers
                     Description = employer.Description,
                     Rating = employer.Rating,
                     ContractedServices = employer.ContractedServices?.Select(s => s.ServiceName).ToList(),
-                    UserType = "Empregador"
+                    UserType = "Empregador",
+                    Subscription = employer.Subscription
                 };
 
                 return Ok(response);

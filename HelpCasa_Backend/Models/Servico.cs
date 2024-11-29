@@ -44,5 +44,11 @@ namespace HelpCasa.Models
     /// Referência ao empregador que contrata o serviço.
     /// </summary>
     public Employer? Employer { get; set; }
+
+    public required string Category { get; set; }
+
+    public string? ImgUrl { get; set; }
+
+    public required Boolean IsActive { get; set; }
   }
 }
