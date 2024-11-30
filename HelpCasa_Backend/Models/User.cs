@@ -32,6 +32,10 @@ namespace HelpCasa.Models
     public DateTime? ResetPasswordExpire { get; set; }
 
     public required bool Subscription { get; set; }
+
+    public int TotalRating { get; set; }
+    public int NumberOfRatings { get; set; }
+    public double AverageRating { get; set; }
   }
 
   public class Employee : User

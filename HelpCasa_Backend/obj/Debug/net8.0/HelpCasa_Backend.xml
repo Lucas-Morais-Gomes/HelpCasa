@@ -58,6 +58,16 @@
             Endpoint para atualizar o perfil do usuário.
             </summary>
         </member>
+        <member name="M:HelpCasa.Controllers.ProfileController.GetUserRating(System.Int32)">
+            <summary>
+            Endpoint para obter a avaliação de um usuário específico pelo seu ID.
+            </summary>
+        </member>
+        <member name="M:HelpCasa.Controllers.ProfileController.GetUserById(System.Int32)">
+            <summary>
+            Endpoint para obter informações do usuário pelo ID.
+            </summary>
+        </member>
         <member name="T:HelpCasa.Controllers.SearchController">
             <summary>
             Controller responsável pela funcionalidade de pesquisa.
@@ -264,6 +274,18 @@
             <inheritdoc />
         </member>
         <member name="M:HelpCasa_Backend.Migrations.InitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:HelpCasa_Backend.Migrations.AddRatingFieldsToUser">
+            <inheritdoc />
+        </member>
+        <member name="M:HelpCasa_Backend.Migrations.AddRatingFieldsToUser.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:HelpCasa_Backend.Migrations.AddRatingFieldsToUser.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:HelpCasa_Backend.Migrations.AddRatingFieldsToUser.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
     </members>

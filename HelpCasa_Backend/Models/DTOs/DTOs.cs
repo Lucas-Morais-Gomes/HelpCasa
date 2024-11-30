@@ -182,5 +182,11 @@ namespace HelpCasa.Models
         public string? ImgUrl { get; set; }
     }
 
+    public class RatingRequestDto
+    {
+        public string RatingUserEmail { get; set; } // Email do usuário que está avaliando
+        public int RatingValue { get; set; }         // Valor da avaliação (1 a 5)
+    }
+
 
 }
