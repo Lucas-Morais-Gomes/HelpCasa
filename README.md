@@ -13,15 +13,12 @@ HelpCasa é uma plataforma que conecta empregadores e empregados domésticos, fa
 - Login de usuários
 - Cadastro de novos usuários
 - Criação e gerenciamento de propostas de serviços
-- Avaliação de serviços prestados
-- Chat entre empregadores e empregados
 
 ## Estrutura do Projeto
 
 ```
 HelpCasa
 ├── HelpCasa_Backend        # pasta referente ao projeto do Backend
-├── helpcasa_frontend       # pasta referente ao projeto do Frontend
 ├── .gitignore              # arquivo .git que ignora certos tipos de pastas e aquivos
 └── README.md               # Este arquivo
 ```
@@ -59,8 +56,6 @@ npm start
 # ou
 yarn start
 ```
-
-A aplicação estará disponível em `http://localhost:3000/login` ou `http://localhost:3000/register`.
 
 ## Contribuição
 
